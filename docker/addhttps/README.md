@@ -25,3 +25,12 @@ mkcert -install
    mkcert local.m2docker localhost 127.0.0.1 ::1
    ```
 6. Copy certificates in the folder .docker/ssl and rename them as cert.pem cert-key.pem 
+
+## 1. Modify docker file ##
+
+1. Add below lines in Dockerfile
+
+RUN mkdir -p /etc/apache2/ssl
+COPY .docker/ssl/*.pem /etc/apache2/ssl/
+
+COPY .docker/apache/local.m2docker-ssl.conf /etc/apache2/sites-available/local.m2docker-ssl.conf
