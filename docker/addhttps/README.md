@@ -29,8 +29,12 @@ mkcert -install
 ## 1. Modify docker file ##
 
 1. Add below lines in Dockerfile
-
+```
 RUN mkdir -p /etc/apache2/ssl
 COPY .docker/ssl/*.pem /etc/apache2/ssl/
-
+COPY .docker/apache/000-default.conf /etc/apache2/sites-available/000-default.conf
+COPY .docker/apache/local.m2docker.conf /etc/apache2/sites-available/local.m2docker.conf
 COPY .docker/apache/local.m2docker-ssl.conf /etc/apache2/sites-available/local.m2docker-ssl.conf
+```
+## Reference site ##
+https://github.com/FiloSottile/mkcert
